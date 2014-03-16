@@ -4,7 +4,7 @@
 /*                                                                                   */
 /* Main source file for NTLMMessageDecoder.                                          */
 /* Takes on stdin a base64 encoded NTLM proxy authentication message (type 1, 2,     */
-/* or 3) and spits out on stdout the deconstruction of the message.                  */ 
+/* or 3) and spits out on stdout the deconstruction of the message.                  */
 /*                                                                                   */
 /* Written by Heath Raftery, 2008                                                    */
 /* Email: heath@hrsoftworks.net           Web: http://heath.hrsoftworks.net          */
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     }
 
     decBuf = decodeString(buf, &i);
-    
+
     if(strcmp(decBuf, "NTLMSSP") == 0)
     {
         short datas=0;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
                 PrintSecurityBuffer(decBuf, msg1->host);
                 printf("\n");
                 break;
-        
+
             case 0x02: //type 2
                 printf("Type 2\n");
                 PrintFlags(msg2->flags);
@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
                 PrintSecurityBuffer(decBuf, msg2->targetInfo);
                 printf("\n");
                 break;
-        
+
             case 0x03: //type 3
                 printf("Type 3\n");
                 PrintFlags(msg3->flags);
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
                 PrintSecurityBuffer(decBuf, msg3->sessionKey);
                 printf("\n");
                 break;
-        
+
             default:
                 printf("Unrecognised type: 0x%X\n", ltohl(msg1->type));
                 break;
@@ -207,9 +207,9 @@ void PrintString(char *str, int len)
       buf[i] = '.';
   }
   buf[i] = '\0';
-  
+
   printf("%s", buf);
-  
+
   free(buf);
 }
 

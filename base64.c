@@ -19,7 +19,7 @@
 
 // decode 4 '6-bit' characters into 3 8-bit binary bytes
 void decodeBlock( unsigned char in[4], unsigned char out[3] )
-{   
+{
   out[ 0 ] = (unsigned char ) (in[0] << 2 | in[1] >> 4);
   out[ 1 ] = (unsigned char ) (in[1] << 4 | in[2] >> 2);
   out[ 2 ] = (unsigned char ) (((in[2] << 6) & 0xc0) | in[3]);
@@ -31,9 +31,9 @@ char* decodeString(char *inString, int *length)
   unsigned char in[4], out[3], v;
   char *decoded;
   int i, len, enc = 0, dec = 0;
-  
+
   decoded = (char *)malloc( (*length) * sizeof(char) );
-  
+
   while(enc<=*length)
   {
     for(len = 0, i = 0; i < 4 && enc<=*length; i++)
@@ -63,7 +63,7 @@ char* decodeString(char *inString, int *length)
     }
   }
   *length = dec;
-  
+
   return decoded;
 }
 
