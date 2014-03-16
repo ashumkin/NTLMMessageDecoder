@@ -1,7 +1,8 @@
 OBJS = main.o base64.o
+CFLAGS=-g
 
 NTLMMessageDecoder : $(OBJS)
-	$(CC) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 main.o : base64.h NTLM.h
 
